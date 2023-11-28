@@ -1,18 +1,17 @@
 package task15_3;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Student {
     private String name;
     private int group;
-    private String course;
+    private int course;
     private int[] grades;
     private final static List<Student> students = new ArrayList<>();
 
-    public Student(String name, int group, String course, int[] grades) {
+    public Student(String name, int group, int course, int[] grades) {
         this.name = name;
         this.group = group;
         this.course = course;
@@ -25,14 +24,13 @@ public class Student {
         double GPA;
         for (int i = 0; i < students.size(); i++) {
             GPA = students.get(i).GPA();
-            System.out.println(GPA);
             if (GPA < 3) {
                 studentsSendDown.add(students.get(i));
             } else {
-                if (students.get(i).course == "4" && GPA >= 3) {
-                    students.get(i).course = "Graduate";
+                if (students.get(i).course == 4 && GPA >= 3) {
+                    students.get(i).course = 100;
                 } else {
-                    students.get(i).course = String.valueOf(Integer.parseInt(students.get(i).course )+ 1);
+                    students.get(i).course = students.get(i).course + 1;
                 }
             }
         }
@@ -47,9 +45,9 @@ public class Student {
         return (double) sum / grades.length;
     }
 
-    public static void printStudents(List<Student> students, int course){
+    public static void printStudents(LinkedList<Student> students, int course){
         for (int i =0; i< students.size();i++){
-            if (students.get(i).course == String.valueOf(course)){
+            if (students.get(i).course == course){
                 System.out.println(students.get(i).name);
             }
         }
