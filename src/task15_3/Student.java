@@ -2,6 +2,7 @@ package task15_3;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Student {
@@ -9,7 +10,7 @@ public class Student {
     private int group;
     private String course;
     private int[] grades;
-    private static List<Student> students = new ArrayList<>();
+    private final static List<Student> students = new ArrayList<>();
 
     public Student(String name, int group, String course, int[] grades) {
         this.name = name;
@@ -18,7 +19,8 @@ public class Student {
         this.grades = grades;
     }
 
-    public static void certification() {
+
+    public static void certification(LinkedList<Student> students) {
         List<Student> studentsSendDown = new ArrayList<>();
         double GPA;
         for (int i = 0; i < students.size(); i++) {
@@ -30,7 +32,7 @@ public class Student {
                 if (students.get(i).course == "4" && GPA >= 3) {
                     students.get(i).course = "Graduate";
                 } else {
-                    students.get(i).course = String.valueOf(Integer.parseInt(students.get(i).course + 1));
+                    students.get(i).course = String.valueOf(Integer.parseInt(students.get(i).course )+ 1);
                 }
             }
         }
@@ -43,6 +45,14 @@ public class Student {
             sum = sum + grades[i];
         }
         return (double) sum / grades.length;
+    }
+
+    public static void printStudents(List<Student> students, int course){
+        for (int i =0; i< students.size();i++){
+            if (students.get(i).course == String.valueOf(course)){
+                System.out.println(students.get(i).name);
+            }
+        }
     }
 
     @Override
