@@ -25,7 +25,7 @@ public class Student {
         for (int i = 0; i < students.size(); i++) {
             GPA = students.get(i).GPA();
             if (GPA < 3) {
-                studentsSendDown.add(students.get(i));
+                students.remove(students.get(i));
             } else {
                 if (students.get(i).course == 4 && GPA >= 3) {
                     students.get(i).course = 100;
@@ -34,7 +34,6 @@ public class Student {
                 }
             }
         }
-        students.removeAll(studentsSendDown);
     }
 
     private double GPA() {

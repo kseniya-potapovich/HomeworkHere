@@ -21,7 +21,9 @@ public class Main {
             if (map.containsValue(str.charAt(i))) {
                 stack.push(str.charAt(i));
             } else if (map.containsKey(str.charAt(i))) {
-                if (stack.isEmpty() || stack.pop() != map.get(str.charAt(i))) ;
+                if (stack.isEmpty() || stack.pop() != map.get(str.charAt(i))) {
+
+                }
             }
         }
         if (stack.isEmpty()) {
